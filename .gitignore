@@ -1,7 +1,6 @@
 # Ignore Python virtual environment
 venv/
-# Ignore pickle files
-*.pkl
+
 # Ignore __pycache__ folders
 __pycache__/
 # Ignore Python cache files
