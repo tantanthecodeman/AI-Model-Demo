@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
+
 
 rf_model = joblib.load(".src/pump_rf_model.pkl")  
 
@@ -35,20 +35,5 @@ st.pyplot(fig)
 st.subheader("Input & Predicted Output")
 st.table(pd.concat([input_features, pd.DataFrame({'pump_prediction':[prediction]})], axis=1))
 
-y_true = [0, 1, 1, 0, 1, 0]
-y_pred = [0, 1, 0, 0, 1, 1]
 
-st.title("AI Model Results Dashboard")
-
-# Confusion Matrix
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-cm = confusion_matrix(y_true, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm)
-fig, ax = plt.subplots()
-disp.plot(ax=ax)
-st.pyplot(fig)
-
-# Accuracy
-accuracy = np.mean(np.array(y_true) == np.array(y_pred))
-st.metric("Accuracy", f"{accuracy*100:.2f}%")
 
